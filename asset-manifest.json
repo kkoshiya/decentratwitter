@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/decentratwitter/static/css/main.64e535d0.css",
-    "main.js": "/decentratwitter/static/js/main.a6fae10d.js",
+    "main.js": "/decentratwitter/static/js/main.552e3fdd.js",
     "static/js/787.8ecd5289.chunk.js": "/decentratwitter/static/js/787.8ecd5289.chunk.js",
     "static/media/logo.png": "/decentratwitter/static/media/logo.4764d5b602aed704dc6b.png",
     "index.html": "/decentratwitter/index.html",
     "main.64e535d0.css.map": "/decentratwitter/static/css/main.64e535d0.css.map",
-    "main.a6fae10d.js.map": "/decentratwitter/static/js/main.a6fae10d.js.map",
+    "main.552e3fdd.js.map": "/decentratwitter/static/js/main.552e3fdd.js.map",
     "787.8ecd5289.chunk.js.map": "/decentratwitter/static/js/787.8ecd5289.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.64e535d0.css",
-    "static/js/main.a6fae10d.js"
+    "static/js/main.552e3fdd.js"
   ]
 }
