@@ -91,7 +91,7 @@ function App() {
             </div>
           ) : (
             <Routes>
-              <Route path="/" element={
+              <Route path="/home" element={
                 <Home contract={contract} />
               } />
               <Route path="/profile" element={
