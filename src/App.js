@@ -91,10 +91,10 @@ function App() {
             </div>
           ) : (
             <Routes>
-              <Route path="/home" element={
+              <Route path="/decentratwitter" element={
                 <Home contract={contract} />
               } />
-              <Route path="/profile" element={
+              <Route path="/decentratwitter/profile" element={
                 <Profile contract={contract} />
               } />
             </Routes>
