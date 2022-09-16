@@ -1,6 +1,7 @@
 import {
   Link,
   BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -48,7 +49,7 @@ function App() {
     setLoading(false)
   }
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <>
           <Navbar expand="lg" bg="secondary" variant="dark">
@@ -101,7 +102,7 @@ function App() {
           )}
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
 
   );
 }
