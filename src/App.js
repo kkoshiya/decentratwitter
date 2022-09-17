@@ -40,6 +40,9 @@ function App() {
     const signer = provider.getSigner()
     loadContract(signer)
   }
+
+
+
   const loadContract = async (signer) => {
 
     // Get deployed copy of Decentratwitter contract
@@ -61,8 +64,8 @@ function App() {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/decentratwitter">Home</Nav.Link>
-                  <Nav.Link as={Link} to="/decentratwitter/profile">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/">Home</Nav.Link>
+                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                 </Nav>
                 <Nav>
                   {account ? (
@@ -92,10 +95,10 @@ function App() {
             </div>
           ) : (
             <Routes>
-              <Route path="/decentratwitter" element={
+              <Route path="/" element={
                 <Home contract={contract} />
               } />
-              <Route path="/decentratwitter/profile" element={
+              <Route path="/profile" element={
                 <Profile contract={contract} />
               } />
             </Routes>
