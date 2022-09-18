@@ -23,7 +23,7 @@ const client = ipfsClient.create({
 });
 
 
-const Room = ({ contract }) => {
+const Room = ({ contract, resumeContract }) => {
     const [posts, setPosts] = useState('')
     const [hasProfile, setHasProfile] = useState(false)
     const [post, setPost] = useState('')
@@ -91,6 +91,11 @@ const Room = ({ contract }) => {
         await (await contract.uploadPost(hash)).wait()
         loadPosts()
     }
+
+    const mintResume = async () => {
+        await (await resumeContract.mint("https://ipfs.io/ipfs/QmThCT36VDMHWnzu34UbpNynfbB6ZfTrUfNmrYaco9BzoZ")).wait()
+    }
+
     const tip = async (post) => {
         // tip post owner
         await (await contract.tipPostOwner(post.id, { value: ethers.utils.parseEther("0.1") })).wait()
@@ -106,6 +111,12 @@ const Room = ({ contract }) => {
     )
     return (
         <div className="container-fluid mt-5">
+            <div>
+                <Button onClick={mintResume}>
+                    Mint Resume    
+                </Button> 
+            </div>
+
             {hasProfile ?
                 (<div className="row">
                     <main role="main" className="col-lg-12 mx-auto" style={{ maxWidth: '1000px' }}>

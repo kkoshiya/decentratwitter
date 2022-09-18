@@ -11,6 +11,8 @@ import { ethers } from "ethers"
 import DecentratwitterAbi from './contractsData/remix.json'
 //import DecentratwitterAddress from './contractsData/decentratwitter-address.json'
 import DecentratwitterAddress from './contractsData/remix-address.json'
+import ResumeAddress from './contractsData/resume-address.json'
+import ResumeAbi from './contractsData/resume.json'
 import { Spinner, Navbar, Nav, Button, Container } from 'react-bootstrap'
 import logo from './logo.png'
 import Home from './Home.js'
@@ -22,6 +24,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [account, setAccount] = useState(null)
   const [contract, setContract] = useState({})
+  const [resumeContract, setResumeContract] = useState({})
 
   const web3Handler = async () => {
     let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -49,7 +52,12 @@ function App() {
     // Get deployed copy of Decentratwitter contract
     //const contract = new ethers.Contract(DecentratwitterAddress.address, DecentratwitterAbi.abi, signer)
     const contract = new ethers.Contract(DecentratwitterAddress.address, DecentratwitterAbi, signer)
+    const resumeContract = new ethers.Contract(ResumeAddress.address, ResumeAbi, signer)
+
+
+
     setContract(contract)
+    setResumeContract(resumeContract)
     setLoading(false)
   }
   return (
@@ -104,7 +112,7 @@ function App() {
                 <Profile contract={contract} />
               } />
               <Route path="/room" element={
-                <Room contract={contract} />
+                <Room contract={contract} resumeContract={resumeContract} />
               } />
             </Routes>
           )}
