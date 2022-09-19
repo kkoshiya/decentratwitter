@@ -13,18 +13,25 @@ import DecentratwitterAbi from './contractsData/remix.json'
 import DecentratwitterAddress from './contractsData/remix-address.json'
 import ResumeAddress from './contractsData/resume-address.json'
 import ResumeAbi from './contractsData/resume.json'
+import MarketAddress from './contractsData/market-address.json'
+import MarketAbi from './contractsData/market.json'
+import NftAddress from './contractsData/nft-address.json'
+import NftAbi from './contractsData/nft.json'
 import { Spinner, Navbar, Nav, Button, Container } from 'react-bootstrap'
 import logo from './logo.png'
 import Home from './Home.js'
 import Profile from './Profile.js'
 import Room from './Room.js'
+import Market from './Market.js'
 import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true)
   const [account, setAccount] = useState(null)
-  const [contract, setContract] = useState({})
-  const [resumeContract, setResumeContract] = useState({})
+  const [contract, setContract] = useState({});
+  const [resumeContract, setResumeContract] = useState({});
+  const [marketContract, setMarketContract] = useState({});
+  const [nftContract, setNftContract] = useState({});
 
   const web3Handler = async () => {
     let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -53,11 +60,14 @@ function App() {
     //const contract = new ethers.Contract(DecentratwitterAddress.address, DecentratwitterAbi.abi, signer)
     const contract = new ethers.Contract(DecentratwitterAddress.address, DecentratwitterAbi, signer)
     const resumeContract = new ethers.Contract(ResumeAddress.address, ResumeAbi, signer)
-
+    const marketContract = new ethers.Contract(MarketAddress.address, MarketAbi, signer)
+    const nftContract = new ethers.Contract(NftAddress.address, NftAbi, signer)
 
 
     setContract(contract)
     setResumeContract(resumeContract)
+    setMarketContract(marketContract)
+    setNftContract(nftContract)
     setLoading(false)
   }
   return (
@@ -76,6 +86,7 @@ function App() {
                   <Nav.Link as={Link} to="/">Home</Nav.Link>
                   <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                   <Nav.Link as={Link} to="/room">Room</Nav.Link>
+                  <Nav.Link as={Link} to="/market">Market</Nav.Link>
                 </Nav>
                 <Nav>
                   {account ? (
@@ -112,7 +123,10 @@ function App() {
                 <Profile contract={contract} />
               } />
               <Route path="/room" element={
-                <Room contract={contract} resumeContract={resumeContract} />
+                <Room contract={contract} resumeContract={resumeContract} marketContract={marketContract} nftContract={nftContract} />
+              } />
+              <Route path="/market" element={
+                <Market contract={contract} resumeContract={resumeContract} marketContract={marketContract} nftContract={nftContract} />
               } />
             </Routes>
           )}

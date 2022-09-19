@@ -30,6 +30,7 @@ const Profile = ({ contract }) => {
     const [avatar, setAvatar] = useState(null)
     const [username, setUsername] = useState('')
     const [loading, setLoading] = useState(true)
+    
     const loadMyNFTs = async () => {
         // Get users nft ids
         const results = await contract.getMyNfts();
@@ -49,6 +50,7 @@ const Profile = ({ contract }) => {
         setNfts(nfts)
         getProfile(nfts)
     }
+
     const getProfile = async (nfts) => {
         const address = await contract.signer.getAddress()
         const id = await contract.profiles(address)
